@@ -1,6 +1,6 @@
 import month_names
 
-day_amount = {
+max_day_amount = {
     'January': 31,
     'February': 29,
     'March': 31,
@@ -16,10 +16,8 @@ day_amount = {
 }
 
 
-def get_month_string(month_name):
-    for month in month_names.Month:
-        if month.name == month_name:
-            return int(month.value)
+def get_month_number(month_name):
+    return month_names.Month[month_name].value
 
 
 def validate_day_value(day_value, month):
@@ -31,6 +29,7 @@ def validate_day_value(day_value, month):
     if day_int <= 0:
         return False
 
-    for month_name, value in day_amount.items():
+    for month_name, value in max_day_amount.items():
         if month == month_name and day_int >= value:
             return False
+    return True

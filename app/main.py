@@ -2,32 +2,39 @@ from datetime import date
 
 import month
 
-bday = input("Set your birthday day(format example - 'March 24') ")
 
-bday_format = bday.split(" ")
-input_month = bday_format[0]
-input_day = bday_format[1]
+def run_app():
+    b_day = input("Set your birthday day(format example - 'March 24') ")
 
-today = date.today()
-print(today)
+    b_day_format = b_day.split(" ")
+    input_month = b_day_format[0]
+    input_day = b_day_format[1]
 
-# Validation
-bday_month = month.get_month_string(input_month)
-if bday_month is None:
-    print("Incorrect month name")
+    today = date.today()
+    print(today)
 
-bday_day_valid = month.validate_day_value(input_day, input_month)
+    # Validation
+    b_day_month = month.get_month_number(input_month)
+    if b_day_month is None:
+        print("Incorrect month name")
 
-if bday_day_valid is False:
-    print("Incorrect day number")
+    b_day_day_valid = month.validate_day_value(input_day, input_month)
 
-bday_day = int(input_day)
+    if b_day_day_valid is False:
+        print("Incorrect day number")
 
-my_birthday = date(today.year, bday_month, bday_day)
+    b_day_day = int(input_day)
 
-if my_birthday < today:
-    my_birthday = date(today.year+1, bday_month, bday_day)
+    my_birthday = date(today.year, b_day_month, b_day_day)
+
+    if my_birthday < today:
+        my_birthday = date(today.year + 1, b_day_month, b_day_day)
+
+    time_to_birthday = abs(my_birthday - today)
+    print("Your birthday will be in: " + str(time_to_birthday.days))
 
 
-time_to_birthday = abs(my_birthday - today)
-print("Your birthday will be in: " + str(time_to_birthday.days))
+if __name__ == '__main__':
+
+    while True:
+        run_app()
