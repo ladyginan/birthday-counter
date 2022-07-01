@@ -1,14 +1,11 @@
-
-
-
-def check_leap_year(year):
+def check_leap_year(year) -> bool:
     if year % 4 != 0:
-        return 365
+        return False
     elif year % 100 != 0:
-        return 366
+        return True
     elif year % 400 != 0:
-        return 356
+        return False
     else:
-        return 366
+        return True
 
 

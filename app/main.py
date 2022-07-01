@@ -11,19 +11,17 @@ def run_app():
     input_month = b_day_format[0]
     input_day = b_day_format[1]
     b_day_month = get_month_number(input_month)
-    b_day_day = month_util.validate_day_value(input_day, input_month)
+    today = date.today()
+    my_birthday = month_util.validate_day_value(input_day, b_day_month, today.year)
 
     # calculate
-    time_to_birthday = calculate_days_before_b_day(b_day_month, b_day_day)
+    time_to_birthday = calculate_days_before_b_day(today, my_birthday)
     print("Your birthday will be in: " + str(time_to_birthday.days))
 
 
-def calculate_days_before_b_day(b_day_month, b_day_day):
-    today = date.today()
-    my_birthday = date(today.year, b_day_month, b_day_day)
-
+def calculate_days_before_b_day(today, my_birthday):
     if my_birthday < today:
-        my_birthday = date(today.year + 1, b_day_month, b_day_day)
+        my_birthday = date(today.year + 1, my_birthday.month, my_birthday.day)
     time_to_birthday = abs(my_birthday - today)
     return time_to_birthday
 
