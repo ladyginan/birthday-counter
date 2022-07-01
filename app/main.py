@@ -1,6 +1,6 @@
 from datetime import date
-
-import month_util
+from month_util import validate_day_value
+from month_util import IncorrectDayValueException
 from app.month import get_month_number
 
 
@@ -12,7 +12,7 @@ def run_app():
     input_day = b_day_format[1]
     b_day_month = get_month_number(input_month)
     today = date.today()
-    my_birthday = month_util.validate_day_value(input_day, b_day_month, today.year)
+    my_birthday = validate_day_value(input_day, b_day_month, today.year)
 
     # calculate
     time_to_birthday = calculate_days_before_b_day(today, my_birthday)
@@ -37,5 +37,5 @@ if __name__ == '__main__':
             print("Incorrect month name")
         except ValueError:
             print("Incorrect day number")
-        except month_util.IncorrectDayValueException as e:
+        except IncorrectDayValueException as e:
             print(e.msg)

@@ -18,4 +18,3 @@ class Month(IntEnum):
 
 def get_month_number(month_name):
     return Month[month_name].value
-
