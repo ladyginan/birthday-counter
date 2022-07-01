@@ -32,7 +32,7 @@ if __name__ == '__main__':
         try:
             run_app()
         except IndexError:
-            print("Incorrect input")
+            print("Incorrect input. Check the format example")
         except KeyError:
             print("Incorrect month name")
         except ValueError:
