@@ -34,7 +34,7 @@ class IncorrectDayValueException(Error):
 
 def validate_day_value(day_value, month, year) -> date:
     """
-    Ensures that day value in the range of valid values.
+    Ensures that the day value is in the range of valid values.
     In case of 29 February, it'll check if a year is a leap year.
     If the year isn't a leap, the b_date will be changed to 1 March
     """
@@ -48,7 +48,7 @@ def validate_day_value(day_value, month, year) -> date:
             if day_int <= value:
                 break
             else:
-                raise IncorrectDayValueException(msg="Wrong input, day value is more than days in the month")
+                raise IncorrectDayValueException(msg="Wrong input, the day value is greater than days in the month")
         break
 
     if month == get_month_number('February') and day_int == 29:
