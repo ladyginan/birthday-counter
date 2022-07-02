@@ -43,17 +43,15 @@ def validate_day_value(day_value, month, year) -> date:
     if day_int <= 0:
         raise IncorrectDayValueException(msg="Wrong input, day can't be zero or below")
 
-    for month_name, value in max_amount_of_days_in_month.items():
-        if month == month_name:
-            if day_int <= value:
-                break
-            else:
-                raise IncorrectDayValueException(msg="Wrong input, the day value is greater than days in the month")
-        break
+    month_number = get_month_number(month)
+    days_in_month = max_amount_of_days_in_month[month]
 
-    if month == get_month_number('February') and day_int == 29:
+    if day_int > days_in_month:
+        raise IncorrectDayValueException(msg="Wrong input, the day value is greater than days in the month")
+
+    if month == 'February' and day_int == 29:
         is_leap_year = year_util.check_leap_year(year)
         if not is_leap_year:
             return date(year, get_month_number('March'), 1)
 
-    return date(year, month, day_int)
+    return date(year, month_number, day_int)
