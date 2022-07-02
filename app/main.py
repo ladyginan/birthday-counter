@@ -14,7 +14,8 @@ def run_app():
 
     # calculate
     time_to_birthday = calculate_days_before_b_day(today, my_birthday)
-    print("Your birthday will be in: " + str(time_to_birthday.days))
+    print("Yor birthday is today! Congratulation!") if my_birthday == today else print("Your birthday will be in: "
+                                                                     + str(time_to_birthday.days))
 
 
 def calculate_days_before_b_day(today, my_birthday):
