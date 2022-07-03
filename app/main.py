@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 from month_util import validate_day_value
 from month_util import IncorrectDayValueException
 
@@ -20,7 +20,7 @@ def run_app():
         print(f"Your birthday will be in: {time_to_birthday.days} days")
 
 
-def calculate_days_before_b_day(today, my_birthday):
+def calculate_days_before_b_day(today, my_birthday) -> timedelta:
     if my_birthday < today:
         my_birthday = date(today.year + 1, my_birthday.month, my_birthday.day)
     time_to_birthday = abs(my_birthday - today)

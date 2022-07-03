@@ -16,5 +16,5 @@ class Month(IntEnum):
     December = 12
 
 
-def get_month_number(month_name):
+def get_month_number(month_name) -> int:
     return Month[month_name].value
